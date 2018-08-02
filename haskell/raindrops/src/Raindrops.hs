@@ -1,6 +1,6 @@
 module Raindrops (convert) where
 
-import Data.Maybe (fromMaybe)
+import Data.Bool (bool)
 
 values :: [(Int, String)]
 values =
@@ -9,9 +9,11 @@ values =
     , (7, "Plong")
     ]
 
+modValues :: [(Int, String)] -> Int -> [String]
+modValues [] n = []
+modValues ((i, str):xs) n = bool [] [str] (mod n i == 0) ++ modValues xs n
+
 convert :: Int -> String
-convert n = fromMaybe (show n) . mconcat $ fmap f values
-    where
-        f (i, str)
-            | 0 == mod n i = Just str
-            | otherwise = Nothing
+convert n = case modValues values n of
+    [] -> show n
+    xs -> concat xs
