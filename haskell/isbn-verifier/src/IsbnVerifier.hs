@@ -16,7 +16,7 @@ isValidContent :: [Int] -> Bool
 isValidContent = all (< 10) . init
 
 isbn :: String -> Bool
-isbn xs = all (\f -> f ns) [isValidLength, isValidContent, isValidChecksum]
+isbn xs = all ($ ns) [isValidLength, isValidContent, isValidChecksum]
     where
         ns = concatMap cast xs
         cast x
