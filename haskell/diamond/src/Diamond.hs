@@ -1,21 +1,21 @@
 module Diamond (diamond) where
 
-import Data.Char (isAlpha, ord)
+import Data.Char (isUpper, ord)
 
-format :: Int -> Char -> [Char]
-format l c = case c of
+row :: Int -> Char -> [Char]
+row width char = case char of
     'A' -> padding ++ "A" ++ padding
-    c   -> padding ++ [c] ++ margin  ++ [c] ++ padding
+    char -> padding ++ [char] ++ margin  ++ [char] ++ padding
     where
-        i = ord c - ord 'A'
-        padding = replicate (l - i - 1) ' '
-        margin = replicate (i * 2 - 1) ' '
+        index = ord char - ord 'A'
+        padding = replicate (width - index - 1) ' '
+        margin = replicate (index * 2 - 1) ' '
 
 diamond :: Char -> Maybe [String]
 diamond c
-    | not $ isAlpha c = Nothing
-    | otherwise = Just $ top ++ bottom
+    | isUpper c = Just $ top ++ bottom
+    | otherwise = Nothing
     where letters = ['A'..c]
-          limit = length letters
-          top = map (format limit) letters
+          rowWidth = length letters
+          top = map (row rowWidth) letters
           bottom = tail $ reverse top
