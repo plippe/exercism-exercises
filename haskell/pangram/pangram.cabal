@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 397b9d9ddecd5631563127d7b585f2c26c28ccfb85af73da26d6a1c1deb6330a
+-- hash: 6e7511f12553855bdd0b1a4c0b4b9237ecf9bbaf45e22bee44a2825bcee6fd28
 
 name:           pangram
 version:        1.4.1.7
@@ -18,7 +18,6 @@ library
       src
   build-depends:
       base
-    , containers
   default-language: Haskell2010
 
 test-suite test
@@ -30,7 +29,6 @@ test-suite test
       test
   build-depends:
       base
-    , containers
     , hspec
     , pangram
   default-language: Haskell2010
