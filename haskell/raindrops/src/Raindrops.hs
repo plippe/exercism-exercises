@@ -10,7 +10,9 @@ intAndValue =
     ]
 
 convert :: Int -> String
-convert n = ifEmptyShowN . concatMap ifModValue $ intAndValue
+convert n
+    | null xs    = show n
+    | otherwise  = xs
     where
         ifModValue (i, v) = bool "" v (mod n i == 0)
-        ifEmptyShowN xs = bool xs (show n) (null xs)
+        xs = concatMap ifModValue $ intAndValue
