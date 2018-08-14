@@ -1,7 +1,5 @@
 module Raindrops (convert) where
 
-import Data.Bool (bool)
-
 intAndValue :: [(Int, String)]
 intAndValue =
     [ (3, "Pling")
@@ -14,5 +12,5 @@ convert n
     | null xs    = show n
     | otherwise  = xs
     where
-        ifModValue (i, v) = bool "" v (mod n i == 0)
-        xs = concatMap ifModValue $ intAndValue
+        xs = concatMap ifModValue intAndValue
+        ifModValue (i, v) = if mod n i == 0 then v else ""
