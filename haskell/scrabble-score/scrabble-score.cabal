@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 296ff97b431ac431d13f5ff4e846b1cb16848cffaed0731ebeff82870d825af7
+-- hash: 048dcaf0b53d2f3cf7336b551113f241c47e4a51748b40ab0ea8b0010ef4b168
 
 name:           scrabble-score
 version:        1.1.0.4
@@ -18,6 +18,7 @@ library
       src
   build-depends:
       base
+    , containers
   default-language: Haskell2010
 
 test-suite test
@@ -29,6 +30,7 @@ test-suite test
       test
   build-depends:
       base
+    , containers
     , hspec
     , scrabble-score
   default-language: Haskell2010
